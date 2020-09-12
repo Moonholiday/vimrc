@@ -1,3 +1,4 @@
+syntax on
 
 set guicursor=
 set hidden
@@ -10,6 +11,7 @@ set smartindent
 set nu
 set nowrap
 set smartcase
+set noshowmode
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
@@ -17,10 +19,7 @@ set undofile
 set incsearch
 set colorcolumn=80
 set relativenumber
-set noshowmode
-set title
 set showmatch
-set hlsearch
 set ignorecase
 set cmdheight=2
 set updatetime=50
@@ -30,6 +29,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
@@ -39,10 +39,10 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-dadbod'
 Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/fzf', { 'do': {-> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'moll/vim-node'
-Plug 'machakann/vim-highlightedyank'
 
 call plug#end()
 
@@ -56,6 +56,9 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.8} }
+let $FZF_DEFAULT_OPTS='--reverse'
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -63,6 +66,5 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader>ps :Rg<SPACE>
-nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
 
